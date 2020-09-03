@@ -15,5 +15,5 @@ Feature: Login To Jira
     And I enter user name - "webinar5"
     And I enter password - "webinar5"
     And I click on the login button
-    And I debug
+#    And I debug
     Then I am on the Home Page

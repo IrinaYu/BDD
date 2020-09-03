@@ -12,6 +12,7 @@ import pages.CreateIssueForm;
 import pages.HomePage;
 import pages.LoginPage;
 import utils.WebDriverFactory;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -85,7 +86,7 @@ public class StepDefinitions {
     }
 
     @When("^I fill Project field - \"(.*?)\"$")
-    public void fillProjectField (String projectName) {
+    public void fillProjectField(String projectName) {
         new CreateIssueForm().projectFieldIsClickable();
         new CreateIssueForm().clearProjectField();
         new CreateIssueForm().enterProjectName(projectName);
@@ -94,7 +95,7 @@ public class StepDefinitions {
     }
 
     @Then("^I fill Issue Type field - \"(.*?)\"$")
-    public void fillIssueTypeField (String issueTypeName) {
+    public void fillIssueTypeField(String issueTypeName) {
         new CreateIssueForm().issueTypeFieldIsClickable();
         new CreateIssueForm().clearIssueTypeField();
         new CreateIssueForm().enterIssueTypeName(issueTypeName);
@@ -102,7 +103,7 @@ public class StepDefinitions {
     }
 
     @Then("^I fill Summary field - \"(.*?)\"$")
-    public void fillSummaryField (String summaryName) {
+    public void fillSummaryField(String summaryName) {
         new CreateIssueForm().summaryFieldIsClickable();
         new CreateIssueForm().clearSummaryField();
         new CreateIssueForm().enterSummaryName(summaryName);
@@ -110,7 +111,7 @@ public class StepDefinitions {
     }
 
     @Then("^I fill Reporter field - \"(.*?)\"$")
-    public void fillReporterField (String reporterName) {
+    public void fillReporterField(String reporterName) {
         new CreateIssueForm().reporterFieldIsClickable();
         new CreateIssueForm().clearReporterField();
         new CreateIssueForm().enterReporterName(reporterName);
@@ -123,8 +124,27 @@ public class StepDefinitions {
     }
 
     @Then("^Pop up with number of created issue is shown$")
-    public void popUpIsDisplayed () {
+    public void popUpIsDisplayed() {
         new CreateIssueForm().popUpIssueName();
     }
 
+    @Then("^I enter user \"([^\"]*)\"$")
+    public void enterUserNameForLogin(String nameLogin) {
+        new LoginPage().enterUserName(nameLogin);
+
+    }
+
+    @Then("^I enter \"([^\"]*)\"$")
+    public void enterUserPasswordForLogin(String passwordLogin) {
+        new LoginPage().enterPassword(passwordLogin);
+    }
+
+    @Then("^I see \"([^\"]*)\"$")
+    public void result(String message) {
+        if (new LoginPage().errorMessageIsPresent(message)) {
+            System.out.println("Test Pass");
+        } else {
+            System.out.println("Test Failed");
+        }
+    }
 }

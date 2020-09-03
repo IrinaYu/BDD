@@ -1,7 +1,6 @@
 @Regression
 Feature: Create Issue
 
-
    Background: Login to JIRA
     Given I navigate to Jira Login Page
     And I enter user name - "IrynaKapustina"
